@@ -1,51 +1,64 @@
-/*
- * Sistema Notificador de Llegada de Individuos
+/* INSTITUTO TECNONÓGICO DE LEÓN
+ * Práctica 2: Sistema Notificador de Llegada de Individuos
+ * Fecha: 20 de septiembre de 2018
+ * Docente: Ing. Levy Rojas Carlos Rafael
  * Autor: Jorge Enrique Aguado Guaní
+ * 7° semestre
 */
 
+/***************************VARIABLES***************************/
 /* Creación de variables para los pines: */
-#define buzzer 6
+#define buzzer 6 //bocina
 #define boton 2 //abrir/cerrar puerta
 #define botonSecuencia 3  //cambiar secuencia rítmica de la alarma
-#define led 7 //led inidicador de alarma activa
+#define ledAlarma 7 //led inidicador de alarma activa
 
-/* Variables para los leds del display */
-#define leda 8
-#define ledb 9
-#define ledc 10
-#define ledd 11
-#define lede 12
-#define ledg 5
+/* Variables para los leds del display de 7 segmentos*/
+#define leda 8  //a del display
+#define ledb 9  //b del display
+#define ledc 10 //c del display
+#define ledd 11 //d del display
+#define lede 12 //e del display
+#define ledg 5  //g del display
 
-/* Variable lógica para determinar si se ha pulsado el botón abrir/cerrar*/
-boolean estadoBoton = false;
+boolean estadoBoton = false; //alternar entre abrir/cerrar
+int ritmoAlarma = 1; //tipo de ritmo secuencia
+/****************************************************************/
 
-/* Variable para controlar el ritmo actual de la alarma*/
-int ritmoAlarma = 1; //Tipo de ritmo secuencia
 
+/*********************CONFIGURACIÓN INICIAL**********************/
 void setup() {
-  pinMode(boton, INPUT); //Botón abrir/cerrar puerta como pin de entrada
-  pinMode(botonSecuencia, INPUT); //Botón cambiar ritmo como pin de entrada
-  pinMode(buzzer, OUTPUT); //Pin del buzzer como salida
-  pinMode(led, OUTPUT); //Pin del led (inidicador) como salida
-  pinMode(leda, OUTPUT); //a display
-  pinMode(ledb, OUTPUT); //b display
-  pinMode(ledc, OUTPUT); //c display
-  pinMode(ledd, OUTPUT); //d display
-  pinMode(lede, OUTPUT); //e display
-  pinMode(ledg, OUTPUT); //g display
-  attachInterrupt(digitalPinToInterrupt(boton), abrirCerrarPuerta, RISING);
+  //Pines de entrada y salida
+  pinMode(boton, INPUT);
+  pinMode(botonSecuencia, INPUT);
+  pinMode(buzzer, OUTPUT);
+  pinMode(ledAlarma, OUTPUT);
+  pinMode(leda, OUTPUT);
+  pinMode(ledb, OUTPUT);
+  pinMode(ledc, OUTPUT);
+  pinMode(ledd, OUTPUT);
+  pinMode(lede, OUTPUT);
+  pinMode(ledg, OUTPUT);
+  
+  //Interrupciones para cada botón
+  attachInterrupt(digitalPinToInterrupt(boton), 
+                  abrirCerrarPuerta, 
+                  RISING);
   attachInterrupt(digitalPinToInterrupt(botonSecuencia), 
                   cambioDeSecuencia, 
-                  RISING
-                  );
-  Serial.begin(9600);
-  display1(); //Ritmo 1 predeterminado (ritmo inicial)
+                  RISING); 
+                                 
+  Serial.begin(9600); //ajustar el monitor serie a 9600
+  apagarLedsDisplay(); //limpia el display
+  display1(); //ritmo 1 predeterminado (ritmo inicial)
 }
+/*****************************************************************/
 
+
+/*********************ESTRUCTURA FUNCIONAL**********************/
 void loop() {
-  while(estadoBoton) {
-    if(ritmoAlarma == 1) {
+  while(estadoBoton) { //Mientras esté activa la alarma
+    if(ritmoAlarma == 1) { //Si está activo el ritmo 1
       alarma1(); 
     }
     else if(ritmoAlarma == 2) {
@@ -59,35 +72,35 @@ void loop() {
   Serial.println("Zzz..."); //El arduino está en modo bajo consumo
 }
 
-/* MÉTODOS PARA CADA RITMO DE LA ALARMA*/
-void alarma1() { //Para hacer sonar la alarma 1
-  /*Secuencia o ritmo de la alarma: */
+/* MÉTODOS PARA CADA RITMO DE LA ALARMA */
+void alarma1() { //para hacer sonar la alarma 1
+  /*Secuencia o ritmo de la alarma 1: */
   noTone(buzzer);
-  tone(buzzer, 1000); //Enviar 1kHz de señal
-  digitalWrite(led, HIGH);
+  tone(buzzer, 1000); //enviar 1kHz de señal
+  digitalWrite(ledAlarma, HIGH);
   delay(100);         
   
   noTone(buzzer);
-  digitalWrite(led, LOW);
+  digitalWrite(ledAlarma, LOW);
   delay(100);
 }
 
-void alarma2() { //Para hacer sonar la alarma 2
+void alarma2() { //para hacer sonar la alarma 2
   /*Secuencia o ritmo de la alarma 2: */
   noTone(buzzer);
-  tone(buzzer, 950); //Enviar 950 Hz de señal
-  digitalWrite(led, HIGH);
+  tone(buzzer, 950); //enviar 950 Hz de señal
+  digitalWrite(ledAlarma, HIGH);
   delay(100);         
   
   noTone(buzzer);
-  digitalWrite(led, LOW);
+  digitalWrite(ledAlarma, LOW);
   delay(100);    
   tone(buzzer, 950);
-  digitalWrite(led, HIGH);
+  digitalWrite(ledAlarma, HIGH);
   delay(100);             
   
   noTone(buzzer);
-  digitalWrite(led, LOW);
+  digitalWrite(ledAlarma, LOW);
   delay(400);
 }
 
@@ -95,23 +108,21 @@ void alarma3() { //Para hacer sonar la alarma 3
   /*Secuencia o ritmo de la alarma 3: */
   noTone(buzzer);  
   tone(buzzer, 1000); //enviar 1kHz de señal
-  digitalWrite(led, HIGH);
+  digitalWrite(ledAlarma, HIGH);
   delay(2000);         
   
   noTone(buzzer);
-  digitalWrite(led, LOW);
+  digitalWrite(ledAlarma, LOW);
   delay(2000);
 }
 
 /* MÉTODOS PARA MOSTRAR EN EL DISPLAY CADA NÚMERO*/
 void display1() {
-  apagarLedsDisplay();
   digitalWrite(ledb, LOW);
   digitalWrite(ledc, LOW);
 }
 
 void display2() {
-  apagarLedsDisplay();
   digitalWrite(leda, LOW);
   digitalWrite(ledb, LOW);
   digitalWrite(ledg, LOW);
@@ -120,7 +131,6 @@ void display2() {
 }
 
 void display3() {
-  apagarLedsDisplay();
   digitalWrite(leda, LOW);
   digitalWrite(ledb, LOW);
   digitalWrite(ledc, LOW);
@@ -139,14 +149,18 @@ void apagarLedsDisplay() {
 /*MÉTODOS DE LAS INTERRUPCIONES: */
 void abrirCerrarPuerta() { //Botón 1 (abrir/cerrar puerta)
   noTone(buzzer);
-  digitalWrite(led, LOW);
+  digitalWrite(ledAlarma, LOW);
   estadoBoton = !estadoBoton; //Abrir/cerrar puerta
 }
 
 void cambioDeSecuencia() {
-  ritmoAlarma++; //Cambia la secuencia rítmica
-  if(ritmoAlarma > 3) ritmoAlarma = 1; //Reiniciar conteo de secuencia de tono
+  ritmoAlarma++; //cambia la secuencia rítmica
+  if(ritmoAlarma > 3) ritmoAlarma = 1; //reiniciar conteo de secuencia de tono
+  
+  apagarLedsDisplay(); //limpia el display
+  
   if(ritmoAlarma == 1) display1();  //valor del display es el número de ritmo
   else if(ritmoAlarma == 2) display2();
   else if(ritmoAlarma == 3) display3();
 }
+/********************************************************************************/
