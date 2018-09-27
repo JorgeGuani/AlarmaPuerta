@@ -112,7 +112,7 @@ Fritzing (Elaboración del diagrama)
 
 **Conexión en físico**
 
-<img src="images/conexionEnFisico.jpg" width=600> <br />
+<img src="images/conexionEnFisico.jpg" width=550> <br />
 
 **Display cada que se presiona el botón para cambiar la secuencia rítmica de la alarma**
 <img src="images/display1.jpg" width=550>
