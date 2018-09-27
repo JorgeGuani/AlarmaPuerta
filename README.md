@@ -65,7 +65,7 @@ Para poder ejecutar satisfactoriamente el sistema se necesita de lo siguiente:
 ### Instalación 🔧
 #### Diagrama (protoboard)
 
-<img src="images/AlarmaDiagrama.jpg" width=500>
+<img src="images/AlarmaDiagrama.jpg" width=600>
 
 Una vez se haya conectado los dispostivos como en el diagrama anterior, se procede a cargar y ejecutar el código.
 
@@ -112,14 +112,16 @@ Fritzing (Elaboración del diagrama)
 
 **Conexión en físico**
 
-<img src="images/conexionEnFisico.jpg" width=500> <br />
+<img src="images/conexionEnFisico.jpg" width=600> <br />
 
-**Display cada que se presiona el botón para cambiar la secuencia rírmica de la alarma**
-<img src="images/display1.jpg" width=400>
+**Display cada que se presiona el botón para cambiar la secuencia rítmica de la alarma**
+<img src="images/display1.jpg" width=550>
 
-<img src="images/display2.jpg" width=400>
+<img src="images/display2.jpg" width=550>
 
-<img src="images/display3.jpg" width=400>
+<img src="images/display3.jpg" width=550>
+
+<img src="images/display4.jpg" width=550>
 
 ## Autor ✒️
 
