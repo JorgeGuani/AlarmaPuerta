@@ -1,5 +1,7 @@
 # Sistema Notificador de Llegada de Individuos
 
+<img src="images/alarma.jpg" width=100>
+
 La práctica consiste diseñar en una alarma con arduino para el acceso a una puerta mediante un botón. Cuando la puerta se abra, la alarma deberá sonar.
 Se tiene que reducir el consumo de energía al mínimo. Mientras la alarma no esté sonando el arduino deberá consumir la mínima cantidad de energía.
 Cuando la puerta se cierre esta deberá de dejar de sonar y regresar al estado de bajo consumo energético. 
@@ -61,6 +63,11 @@ Para poder ejecutar satisfactoriamente el sistema se necesita de lo siguiente:
 ```
 
 ### Instalación 🔧
+#### Diagrama (protoboard)
+
+<img src="images/AlarmaDiagrama.jpg" width=500>
+
+Una vez se haya conectado los dispostivos como en el diagrama anterior, se procede a cargar y ejecutar el código.
 
 #### Pasos para ejecutar el código
 Para ejecutar el archivo.ino siga estos pasos:
@@ -78,10 +85,26 @@ Para ejecutar el archivo.ino siga estos pasos:
 
 ## Construido con 🛠️
 
-Arduino IDE
+Arduino IDE (Código y compilación) <br />
 
-* [Arduino](http://www.arduino.cc/) <br />
+* [Arduino](http://www.arduino.cc/)
 
+Fritzing (Elaboración del diagrama)
+
+* [Fritzing](fritzing.org/home/) <br />
+
+## Resultados 📌
+
+**Conexión en físico**
+
+<img src="images/conexionEnFisico.jpg" width=500> <br />
+
+**Display cada que se presiona el botón para cambiar la secuencia rírmica de la alarma**
+<img src="images/display1.jpg" width=400>
+
+<img src="images/display2.jpg" width=400>
+
+<img src="images/display3.jpg" width=400>
 
 ## Autor ✒️
 
