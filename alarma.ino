@@ -6,6 +6,9 @@
  * 7° semestre
 */
 
+/* Añadir librería para el bajo consumo del arduino*/
+#include <LowPower.h>
+
 /* Creación de variables para los pines: */
 #define buzzer 5          //bocina
 #define boton 2           //abrir/cerrar puerta
@@ -74,7 +77,8 @@ void loop() {
     }
     Serial.println("Estoy trabajando"); //el arduino está activo
   }
-  Serial.println("Zzz..."); //El arduino está en modo bajo consumo
+  LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
+  //Serial.println("Zzz..."); //El arduino está en modo bajo consumo
 }
 
 
@@ -126,7 +130,7 @@ void alarma3() {  //Para hacer sonar la alarma 3
 void alarma4() { //Para hacer sonar la alarma 4
   /*Secuencia o ritmo de la alarma 4 (melodía): */
   randomSeed(analogRead(0)); // genera una semilla para el núm. aleatorio
-  numeroAleatorio = random(523, 1479); //para la frecuencia
+  numeroAleatorio = random(523, 1079); //para la frecuencia
   
   noTone(buzzer);  
   tone(buzzer, numeroAleatorio);       //frecuencia aleatoria
