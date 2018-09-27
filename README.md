@@ -7,7 +7,7 @@ Se tiene que reducir el consumo de energía al mínimo. Mientras la alarma no es
 Cuando la puerta se cierre esta deberá de dejar de sonar y regresar al estado de bajo consumo energético. 
 Se hace uso de interrupciones.
 ```
-Funcionalidad extra: El sistema tiene 3 ritmos diferentes para la alarma. 
+Funcionalidad extra: El sistema tiene 4 ritmos diferentes para la alarma. 
 Se hace uso de un segundo botón (segunda interrupción) para cambiar el ritmo.
 El display muestra el número del ritmo que actualmente se encuentra.
 ```
@@ -82,6 +82,21 @@ Para ejecutar el archivo.ino siga estos pasos:
 - Carga el programa a la placa arduino
 - Listo <br />
 
+## Explicación
+Para abrir o cerrar la puerta se tiene que oprimir el botón 1, el cual es el que está situado más cerca del buzzer y 
+del led (en el diagrama). Al abrirse al puerta (pulsar una vez el botón) se activará la alarma y esta sonará de acuerdo
+al ritmo actual de la alarma. Al cerrarse la puerta (pulsar nuevamente el botón), la alarma dejará de sonar permitiendo 
+al arduino seguir con su actividad, en este caso a pasar a bajo consumo. 
+
+Inicialmente el ritmo es 1 (se puede visualizar en el display), y se puede cambiar mediante el otro botón (situado más 
+caerca del display de 7 segmentos). Cada que se presiona ese segundo botón, hace cambiar el ritmo, como tiene 4 ritmos:
+del ritmo 1 pasará al 2, y de este al 3, y posteriormente al 4, para que finalmente se reinicie la secuencia.
+
+Los ritmos son los siguientes:
+1. Un constante prendido y apagado (rápido)
+2. 2 pulsos y una pausa ligera
+3. Un pulso duradero, una pausa
+4. Una melodía al azar, es decir, frecuencias aleatorias
 
 ## Construido con 🛠️
 
