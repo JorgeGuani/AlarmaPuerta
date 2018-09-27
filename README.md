@@ -65,7 +65,7 @@ Para poder ejecutar satisfactoriamente el sistema se necesita de lo siguiente:
 ### Instalación 🔧
 #### Diagrama (protoboard)
 
-<img src="images/AlarmaDiagrama.jpg" width=600>
+<img src="images/AlarmaDiagrama.jpg" width=550>
 
 Una vez se haya conectado los dispostivos como en el diagrama anterior, se procede a cargar y ejecutar el código.
 
